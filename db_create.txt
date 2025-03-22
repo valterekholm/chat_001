@@ -1,0 +1,19 @@
+CREATE DATABASE chatten;
+USE chatten;
+
+CREATE TABLE chat (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    ip VARCHAR(45) NOT NULL,
+    message TEXT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE USER 'chatten_user'@'localhost' IDENTIFIED BY 'chatten_pass';
+GRANT ALL PRIVILEGES ON chatten.* TO 'chatten_user'@'localhost';
+FLUSH PRIVILEGES;
+
+<?php
+// Anslut till databasen
+$dsn = "mysql:host=localhost;dbname=chatten;charset=utf8mb4";
+$user = "chatten_user";
+$pass = "chatten_pass";
